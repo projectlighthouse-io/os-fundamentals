@@ -12,6 +12,8 @@ int main() {
 
     posix_spawn_file_actions_t actions;
     posix_spawn_file_actions_init(&actions);
+    // posix_spawn_file_actions_addopen(&actions, 1, "out.txt", O_WRONLY|O_CREAT, 0644);
+    // ^ uncomment to redirect stdout, similar to the fork-exec window
 
     int ret = posix_spawn(&pid, "/bin/ls", &actions, NULL, args, environ);
     if (ret != 0) {
